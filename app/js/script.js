@@ -8,19 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Define an Axios instance with a base URL
     const axiosInstance = axios.create({
-      baseURL: "http://localhost:3000/users", // Assuming your API routes start with "/users"
+      baseURL: "express-railway-production-4a8a.up.railway.app/users", // Assuming your API routes start with "/users"
       headers: {
         "Content-Type": "application/json",
       },
     });
   
     createUserButton.addEventListener("click", async () => {
-      console.log('Masuk!');
       const name = document.getElementById("createName").value;
       const email = document.getElementById("createEmail").value;
       try {
         const response = await axiosInstance.post("/", { name, email });
-        console.log(response);
         output.innerHTML = JSON.stringify(response.result);
       } catch (error) {
         output.innerHTML = JSON.stringify(error.response.msg);
