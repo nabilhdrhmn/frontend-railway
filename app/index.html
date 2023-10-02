@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <h1>User Management</h1>
+    
+    <div class="form">
+        <h2>Create User</h2>
+        <input type="text" id="createName" placeholder="Name">
+        <input type="text" id="createEmail" placeholder="Email">
+        <button id="createUser">Create User</button>
+    </div>
+
+    <div class="form">
+        <h2>Find User by Name</h2>
+        <input type="text" id="findName" placeholder="Name">
+        <button id="findUser">Find User</button>
+    </div>
+
+    <div class="form">
+        <h2>Update User Email by Name</h2>
+        <input type="text" id="updateName" placeholder="Name">
+        <input type="text" id="updateEmail" placeholder="New Email">
+        <button id="updateUserEmail">Update Email</button>
+    </div>
+
+    <div class="form">
+        <h2>Delete User by Name</h2>
+        <input type="text" id="deleteName" placeholder="Name">
+        <button id="deleteUser">Delete User</button>
+    </div>
+
+    <div id="output"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
