@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const updateUserEmailButton = document.getElementById("updateUserEmail");
     const deleteUserButton = document.getElementById("deleteUser");
 
-    const baseURL = 'http://localhost:3000/users'
+    const baseURL = 'https://demo-be-railway-production.up.railway.app/users'
 
     createUserButton.addEventListener("click", async () => {
       const name =  document.getElementById("createName").value;
