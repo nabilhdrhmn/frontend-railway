@@ -5,58 +5,64 @@ document.addEventListener("DOMContentLoaded", () => {
     const findUserButton = document.getElementById("findUser");
     const updateUserEmailButton = document.getElementById("updateUserEmail");
     const deleteUserButton = document.getElementById("deleteUser");
-  
-    // Define an Axios instance with a base URL
-    const axiosInstance = axios.create({
-      baseURL: "https://express-railway-production-0981.up.railway.app/users", // Assuming your API routes start with "/users"
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  
+
+    const baseURL = 'http://localhost:3000/users'
+
     createUserButton.addEventListener("click", async () => {
-      const name = document.getElementById("createName").value;
+      const name =  document.getElementById("createName").value;
       const email = document.getElementById("createEmail").value;
-      try {
-        const response = await axiosInstance.post("/", { name, email });
-        output.innerHTML = JSON.stringify(response.result);
-      } catch (error) {
-        output.innerHTML = JSON.stringify(error.response.msg);
-      }
+
+      const response = await fetch(baseURL + '/', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({name, email}),
+      });
+
+      const result = await response.json();
+      output.innerHTML = JSON.stringify(result);
     });
-  
+
     findUserButton.addEventListener("click", async () => {
-      const name = document.getElementById("findName").value;
-  
-      try {
-        const response = await axiosInstance.get(`/${name}`);
-        output.innerHTML = JSON.stringify(response.data);
-      } catch (error) {
-        output.innerHTML = JSON.stringify(error.response.data);
-      }
+      const name =  document.getElementById("findName").value;
+
+      const response = await fetch(baseURL + '/' + name, {
+        method: "GET",
+      });
+      const result = await response.json();
+      output.innerHTML = JSON.stringify(result);
     });
-  
+
     updateUserEmailButton.addEventListener("click", async () => {
-      const name = document.getElementById("updateName").value;
+      const name =  document.getElementById("updateName").value;
       const email = document.getElementById("updateEmail").value;
-  
-      try {
-        const response = await axiosInstance.put(`/${name}/email`, { email });
-        output.innerHTML = JSON.stringify(response.data);
-      } catch (error) {
-        output.innerHTML = JSON.stringify(error.response.data);
-      }
+
+      const response = await fetch(baseURL + '/' + name, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({email}),
+      });
+
+      const result = await response.json();
+      output.innerHTML = JSON.stringify(result);
     });
-  
+
     deleteUserButton.addEventListener("click", async () => {
-      const name = document.getElementById("deleteName").value;
-  
-      try {
-        await axiosInstance.delete(`/${name}`);
-        output.innerHTML = "User deleted successfully.";
-      } catch (error) {
-        output.innerHTML = JSON.stringify(error.response.data);
+      const name =  document.getElementById("deleteName").value;
+
+      const response = await fetch(baseURL + '/' + name, {
+        method: "DELETE",
+      });
+      console.log(response);
+      if (response === null) {
+        output.innerHTML = "Sukses delete!";
+        return;
       }
+      const result = await response.json();
+      output.innerHTML = JSON.stringify(result);
     });
   });
   
