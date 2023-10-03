@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Define an Axios instance with a base URL
     const axiosInstance = axios.create({
-      baseURL: "https://express-railway-production-4a8a.up.railway.app/users", // Assuming your API routes start with "/users"
+      baseURL: "https://express-railway-production-0981.up.railway.app/users", // Assuming your API routes start with "/users"
       headers: {
         "Content-Type": "application/json",
       },
